@@ -1,2 +1,2 @@
 # triio_page
-En este repositorio se desarrollará la furuta página de Grupo Triio SpA
+En este repositorio se desarrollará la futura página de Grupo Triio SpA
