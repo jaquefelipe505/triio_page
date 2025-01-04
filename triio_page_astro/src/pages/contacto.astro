@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LandingHeader from '../components/LandingHeader.astro'
+import Section from '../components/Section.astro'
+---
+
+<Layout title="Triio Page/contacto">
+    <LandingHeader/>
+    <div>
+        <Section color="white" title="Contacto">
+            <img
+			slot="background"
+			class="h-full w-full object-center object-cover" 
+			src="../../public/foto.jpg">
+        </Section>
+        <div class="z-30 flex items-center justify-center fixed inset-0">
+            <form class="bg-white p-6 rounded-lg shadow-lg">
+                <label class="block mb-2">Nombre</label>
+                <input type="text" name="nombre" class="border p-2 mb-4 w-full rounded">
+        
+                <label class="block mb-2">Email</label>
+                <input type="email" name="email" class="border p-2 mb-4 w-full rounded">
+        
+                <label class="block mb-2">Asunto</label>
+                <input type="text" name="asunto" class="border p-2 mb-4 w-full rounded">
+
+                <label class="block mb-2">Mensaje</label>
+                <textarea name="mensaje" class="border p-2 mb-4 w-full rounded"></textarea>
+
+                <input type="submit" value="Enviar" class="border p-2 mb-4 px-3 py-1 rounded 
+                                                           hover:cursor-pointer hover:bg-slate-200">
+
+            </form>
+        </div>
+    </div>
+
+</Layout>
