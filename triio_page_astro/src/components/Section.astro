@@ -12,6 +12,7 @@ const textColor = `text-${color}`
 		<header>
 			<h2 class={`${textColor} pt-40 text-5xl font-medium`}>{title}</h2>
 			<p class={`${textColor} text-base`}>{subtitle}</p>
+			<slot name="header_qs"></slot>
 		</header>
 		
 		<footer class="flex flex-grow flex-col justify-end pb-24">
@@ -25,13 +26,6 @@ const textColor = `text-${color}`
 
         <slot name="background"></slot>
 		
-	</div>
-
-
-	<div  class="z-30 relative h-full flex flex-col">
-		<header>
-			<slot name="header_qs"></slot>		
-		</header>
 	</div>
 
 </section>
