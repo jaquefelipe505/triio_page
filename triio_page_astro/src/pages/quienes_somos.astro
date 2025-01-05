@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import LandingHeader from '../components/LandingHeader.astro';
 import Section from '../components/Section.astro';
+import GeneralFooter from '../components/GeneralFooter.astro';
 ---
 
 
@@ -64,4 +65,20 @@ import Section from '../components/Section.astro';
         </Section>
     </div>
 
+    
+    <div class="snap-center">
+        <Section 
+            color="white"
+            bg_color="white">
+
+            <div slot="header_qs" class="flex items-center justify-center inset-0 h-screen">
+                <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">
+                    En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
+                </p>                
+            </div>
+
+        </Section>
+    </div>
+
+    <GeneralFooter/>
 </Layout>
