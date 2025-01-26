@@ -1,0 +1,45 @@
+---
+type Props = {
+  images: string[]; // images es un array de cadenas
+};
+
+const { images }: Props = Astro.props;
+---
+
+<section class="relative w-full max-w-4xl mx-auto overflow-hidden">
+    <!-- Slides -->
+    <div id="slider" class="flex transition-transform duration-500">
+      {images.map((image) => (
+        <img src={image} alt="Slider Image" class="w-full flex-shrink-0" />
+      ))}
+    </div>
+  
+    <!-- Controls -->
+    <button id="prevSlide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+      &lt;
+    </button>
+    <button id="nextSlide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+      &gt;
+    </button>
+  </section>
+  
+  <script is:inline>
+    let currentIndex = 0;
+    const slider = document.getElementById('slider');
+    const prevSlide = document.getElementById('prevSlide');
+    const nextSlide = document.getElementById('nextSlide');
+  
+    const updateSlider = () => {
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    };
+  
+    prevSlide.addEventListener('click', () => {
+      currentIndex = currentIndex === 0 ? slider.children.length - 1 : currentIndex - 1;
+      updateSlider();
+    });
+  
+    nextSlide.addEventListener('click', () => {
+      currentIndex = currentIndex === slider.children.length - 1 ? 0 : currentIndex + 1;
+      updateSlider();
+    });
+  </script>

@@ -3,6 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import LandingHeader from '../components/LandingHeader.astro';
 import Section from '../components/Section.astro';
 import GeneralFooter from '../components/GeneralFooter.astro';
+import PhotoSlider from '../components/PhotoSlider.astro';
+
+const photos_1 = [
+  "../../public/casa1.jpeg",
+  "../../public/casa2.jpeg",
+  "../../public/casa3.jpeg",
+];
+        
 ---
 
 
@@ -13,7 +21,7 @@ import GeneralFooter from '../components/GeneralFooter.astro';
         <Section 
             color="white">
 
-            <div slot="header_qs" class="flex items-center justify-center h-screen">
+            <div slot="aux_slot" class="flex items-center justify-center h-screen">
                 <svg class="h-60 w-70" xmlns="http://www.w3.org/2000/svg" version="1.0" width="2112.000000pt" height="1553.000000pt" viewBox="0 0 2112.000000 1553.000000" preserveAspectRatio="xMidYMid meet">
 	
                 <g transform="translate(0.000000,1553.000000) scale(0.100000,-0.100000)" 
@@ -30,7 +38,7 @@ import GeneralFooter from '../components/GeneralFooter.astro';
                     <path d="M13758 11679 c-17 -9 -18 -107 -18 -1819 l0 -1809 21 -11 c13 -8 24 -8 32 -2 11 10 281 111 509 191 59 21 114 44 123 51 13 11 15 193 15 1680 0 1322 -3 1670 -12 1678 -7 5 -44 10 -82 11 -84 1 -511 29 -546 36 -14 2 -33 0 -42 -6z"/>
                 </g>
                 <g transform="translate(0.000000,1553.000000) scale(0.100000,-0.100000)" 
-                fill="white" stroke="none">
+                    fill="white" stroke="none">
                     <path d="M11383 13004 c-10 -4 -13 -54 -13 -199 0 -209 1 -212 55 -213 26 -1 1513 -207 1666 -231 43 -7 170 2 583 43 290 29 532 58 537 63 14 14 8 44 -11 54 -8 5 -474 87 -1035 184 -561 96 -1177 202 -1370 235 -192 33 -361 63 -375 65 -14 2 -31 2 -37 -1z"/>
                     <path d="M15905 4369 c-93 -12 -237 -54 -297 -86 -97 -53 -169 -154 -207 -292 -40 -146 -42 -212 -39 -1291 4 -1146 1 -1093 71 -1260 71 -173 224 -259 517 -290 131 -13 2675 -13 2809 0 181 19 336 71 413 139 82 72 137 199 163 380 14 92 15 244 12 1146 -3 1150 -1 1098 -69 1263 -70 170 -219 259 -488 292 -104 12 -2782 12 -2885 -1z m2693 -1591 l-3 -1023 -1240 0 -1240 0 -3 1023 -2 1022 1245 0 1245 0 -2 -1022z"/>
                     <path d="M13000 2760 l0 -1620 375 0 375 0 0 1620 0 1620 -375 0 -375 0 0 -1620z"/>
@@ -59,7 +67,7 @@ import GeneralFooter from '../components/GeneralFooter.astro';
 			class="h-full w-full object-center object-cover" 
 			src="../../public/casa3.jpeg">
 
-            <div slot="header_qs" class="flex items-center justify-center inset-0 h-screen">
+            <div slot="aux_slot" class="flex items-center justify-center inset-0 h-screen">
                 <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">
                     En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
                 </p>                
@@ -74,7 +82,7 @@ import GeneralFooter from '../components/GeneralFooter.astro';
             color="white"
             bg_color="white">
 
-            <div slot="header_qs" class="flex items-center justify-center inset-0 h-screen">
+            <div slot="aux_slot" class="flex items-center justify-center inset-0 h-screen">
                 <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">
                     En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
                 </p>                
@@ -82,6 +90,23 @@ import GeneralFooter from '../components/GeneralFooter.astro';
 
         </Section>
     </div>
+     
+    <div class="snap-center">
+    <Section
+        bg_color="black">
+
+
+        <div slot="aux_slot">
+
+            <PhotoSlider images={photos_1} />
+      
+        </div>
+
+
+        
+ 
+    </Section>
+    <div/>
 
     <GeneralFooter/>
 </Layout>

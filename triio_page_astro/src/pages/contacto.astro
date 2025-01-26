@@ -13,8 +13,8 @@ import GeneralFooter from '../components/GeneralFooter.astro';
 			slot="background"
 			class="h-full w-full object-center object-cover" 
 			src="../../public/foto.jpg">
-        </Section>
-        <div class="z-30 flex items-center justify-center fixed inset-0">
+        
+        <div slot="aux_slot" class="z-30 pt-[55px] flex items-center justify-center inset-0">
             <form class="bg-white p-6 rounded-lg shadow-lg">
                 <label class="block mb-2">Nombre</label>
                 <input type="text" name="nombre" class="border p-2 mb-4 w-full rounded">
@@ -33,6 +33,7 @@ import GeneralFooter from '../components/GeneralFooter.astro';
 
             </form>
         </div>
+        </Section>
     </div>
     <GeneralFooter/>
 </Layout>
