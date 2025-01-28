@@ -3,17 +3,39 @@ import Layout from "../layouts/Layout.astro"
 import Section from "../components/Section.astro"
 import LandingHeader from "../components/LandingHeader.astro"
 import GeneralFooter from "../components/GeneralFooter.astro"
+
+import { getCollection } from "astro:content";
+
+const vivienda = await getCollection('vivienda')
+
 ---
 <Layout>
 <LandingHeader/>
-<div class="snap-center">
-    <Section 
-        color="white"
-        bg_color="black"
-        title="Viviendas">
-        
-    </Section>
-</div>
+
+
+<section aria-label="hola">
+    <div class="px-4 mx-auto max-w-screen-xl">
+        <div class="grid gap-6 md:grid-cols-2">
+            {
+                vivienda.map((casa: { data: any; }) => { 
+                    const {data} = casa
+                    const { title, description, img_proceso } = data
+
+                    return (
+                        <article>
+
+                            <img src={`${img_proceso}`} alt={title} class="w-full rounded-lg">
+                        </article>
+                    )
+                }) 
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
 
 <GeneralFooter/>
 <Layout/>

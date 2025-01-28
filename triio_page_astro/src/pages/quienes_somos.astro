@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import LandingHeader from '../components/LandingHeader.astro';
 import Section from '../components/Section.astro';
+import InfoSection from '../components/InfoSection.astro';
 import GeneralFooter from '../components/GeneralFooter.astro';
 import PhotoSlider from '../components/PhotoSlider.astro';
 
@@ -9,6 +10,8 @@ const photos_1 = [
   "../../public/casa1.jpeg",
   "../../public/casa2.jpeg",
   "../../public/casa3.jpeg",
+  "../../public/GA-1.webp",
+  "../../public/GA-2.webp",
 ];
         
 ---
@@ -18,7 +21,7 @@ const photos_1 = [
     <LandingHeader/>
 
     <div class="snap-center">
-        <Section 
+        <InfoSection 
             color="white">
 
             <div slot="aux_slot" class="flex items-center justify-center h-screen">
@@ -55,11 +58,11 @@ const photos_1 = [
 			class="h-full w-full object-center object-cover" 
 			src="../../public/casa2.jpeg">
 
-        </Section>
+        </InfoSection>
     </div>
 
     <div class="snap-center">
-        <Section 
+        <InfoSection 
             color="white">
 
 			<img
@@ -73,12 +76,12 @@ const photos_1 = [
                 </p>                
             </div>
 
-        </Section>
+        </InfoSection>
     </div>
 
     
     <div class="snap-center">
-        <Section 
+        <InfoSection 
             color="white"
             bg_color="white">
 
@@ -88,24 +91,24 @@ const photos_1 = [
                 </p>                
             </div>
 
-        </Section>
+        </InfoSection>
     </div>
      
     <div class="snap-center">
-    <Section
+    <InfoSection
         bg_color="black">
 
-
-        <div slot="aux_slot">
+        <div slot="aux_slot" class="relative max-w-5xl mt-[130px] ml-20">
 
             <PhotoSlider images={photos_1} />
       
         </div>
+        <div slot="aux_slot2" class="flex items-end justify-items-end inset-0 h-screen">
+            <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">hola</p>
 
+        </div>
 
-        
- 
-    </Section>
+    </InfoSection>
     <div/>
 
     <GeneralFooter/>

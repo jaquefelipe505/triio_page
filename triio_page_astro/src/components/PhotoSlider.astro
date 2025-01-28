@@ -6,40 +6,127 @@ type Props = {
 const { images }: Props = Astro.props;
 ---
 
-<section class="relative w-full max-w-4xl mx-auto overflow-hidden">
-    <!-- Slides -->
-    <div id="slider" class="flex transition-transform duration-500">
-      {images.map((image) => (
-        <img src={image} alt="Slider Image" class="w-full flex-shrink-0" />
-      ))}
-    </div>
-  
-    <!-- Controls -->
-    <button id="prevSlide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-      &lt;
-    </button>
-    <button id="nextSlide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-      &gt;
-    </button>
-  </section>
-  
-  <script is:inline>
-    let currentIndex = 0;
-    const slider = document.getElementById('slider');
-    const prevSlide = document.getElementById('prevSlide');
-    const nextSlide = document.getElementById('nextSlide');
-  
-    const updateSlider = () => {
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-    };
-  
-    prevSlide.addEventListener('click', () => {
-      currentIndex = currentIndex === 0 ? slider.children.length - 1 : currentIndex - 1;
+<section class="overflow-hidden relative">
+  <!-- Slides -->
+  <div id="slider" class="flex transition-transform duration-500 ease-out">
+    {images.map((image) => (
+      <img
+        src={image}
+        alt="Slider Image"
+        class="w-full flex-shrink-0 rounded-xl object-cover"
+      />
+    ))}
+  </div>
+
+  <!-- Controls -->
+  <button
+    id="prevSlide"
+    class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 hover:border-white hover:border-2 rounded-full z-10"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-left"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M13 20l-3 -8l3 -8" />
+    </svg>
+  </button>
+  <button
+    id="nextSlide"
+    class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 hover:border-white hover:border-2 rounded-full z-10"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-right"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M11 4l3 8l-3 8" />
+    </svg>
+  </button>
+
+  <!-- Indicators -->
+  <div id="points" class="absolute bottom-4 right-0 left-0 flex justify-center gap-2 z-10">
+    {images.map((image, index) => (
+      <button
+        data-id={`${index}-${image}`} 
+        class="w-3 h-3 bg-gray-400 rounded-full transition-transform duration-300 hover:scale-125"
+        data-index={index}
+      ></button>
+    ))}
+  </div>
+</section>
+
+<script is:inline>
+  let currentIndex = 0;
+  const slider = document.getElementById('slider');
+  const prevSlide = document.getElementById('prevSlide');
+  const nextSlide = document.getElementById('nextSlide');
+  const points = document.getElementById('points').children;
+  const slideCount = slider.children.length;
+
+  const updateSlider = () => {
+    // Actualiza la posición del slider
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Actualiza los puntos activos
+    Array.from(points).forEach((point, index) => {
+      point.classList.toggle('bg-gray-800', index === currentIndex);
+      point.classList.toggle('bg-gray-400', index !== currentIndex);
+    });
+  };
+
+  // Configuración inicial
+  updateSlider();
+
+  // Botón "Anterior"
+  prevSlide.addEventListener('click', () => {
+    currentIndex = currentIndex === 0 ? slideCount - 1 : currentIndex - 1;
+    updateSlider();
+  });
+
+  // Botón "Siguiente"
+  nextSlide.addEventListener('click', () => {
+    currentIndex = currentIndex === slideCount - 1 ? 0 : currentIndex + 1;
+    updateSlider();
+  });
+
+  // Indicadores funcionales
+  Array.from(points).forEach((point) => {
+    point.addEventListener('click', (event) => {
+      currentIndex = Number(event.target.dataset.index);
       updateSlider();
     });
-  
-    nextSlide.addEventListener('click', () => {
-      currentIndex = currentIndex === slider.children.length - 1 ? 0 : currentIndex + 1;
-      updateSlider();
+  });
+
+  // Auto-slide
+  let autoSlide = setInterval(() => {
+    currentIndex = currentIndex === slideCount - 1 ? 0 : currentIndex + 1;
+    updateSlider();
+  }, 5000);
+
+  // Pausar el auto-slide al interactuar
+  [prevSlide, nextSlide, ...points].forEach((element) => {
+    element.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    element.addEventListener('mouseleave', () => {
+      autoSlide = setInterval(() => {
+        currentIndex = currentIndex === slideCount - 1 ? 0 : currentIndex + 1;
+        updateSlider();
+      }, 5000);
     });
-  </script>
+  });
+</script>
