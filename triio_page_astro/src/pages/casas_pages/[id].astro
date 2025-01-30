@@ -34,7 +34,9 @@ const final = f_array ?? [];
     <LandingHeader />
 
     <div class="snap-center">
-        <Section title={title} />
+        <Section title={title}
+                 color="white" 
+                 bg_color = "black"/>
     </div>
 
     <div class="snap-center">
@@ -48,7 +50,7 @@ const final = f_array ?? [];
     <div class="snap-center">
         <InfoSection bg_color="black">
             <div slot="aux_slot" class="relative max-w-5xl mt-[130px] ml-20">
-                <PhotoSlider images={proceso.slice(0,5)} />
+                <PhotoSlider images={proceso} />
             </div>
         </InfoSection>
     </div>
