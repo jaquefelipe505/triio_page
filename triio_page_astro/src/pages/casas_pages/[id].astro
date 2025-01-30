@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Preloader from "../../components/Preloader.astro";
+import LandingHeader from "../../components/LandingHeader.astro";
+import GeneralFooter from "../../components/GeneralFooter.astro";
+import Section from "../../components/Section.astro";
+import InfoSection from "../../components/InfoSection.astro";
+import PhotoSlider from "../../components/PhotoSlider.astro";
+
+export async function getStaticPaths() {
+    const vivienda = await getCollection("vivienda");
+
+    return vivienda.map((casa) => ({
+        params: { id: casa.slug },
+        props: { casa },
+    }));
+}
+
+const { casa } = Astro.props;
+const { data } = casa;
+const { title, description, main_img, m_array, p_array, f_array } = data;
+
+
+const modelo = m_array ?? [];
+const proceso = p_array ?? [];
+const final = f_array ?? [];
+---
+
+
+<Layout title={title}>
+    <Preloader />
+    <LandingHeader />
+
+    <div class="snap-center">
+        <Section title={title} />
+    </div>
+
+    <div class="snap-center">
+        <InfoSection bg_color="black">
+            <div slot="aux_slot" class="relative max-w-5xl mt-[130px] ml-20">
+                <PhotoSlider images={modelo} />
+            </div>
+        </InfoSection>
+    </div>
+
+    <div class="snap-center">
+        <InfoSection bg_color="black">
+            <div slot="aux_slot" class="relative max-w-5xl mt-[130px] ml-20">
+                <PhotoSlider images={proceso.slice(0,5)} />
+            </div>
+        </InfoSection>
+    </div>
+
+    <div class="snap-center">
+        <InfoSection bg_color="black">
+            <div slot="aux_slot" class="relative max-w-5xl mt-[130px] ml-20">
+                <PhotoSlider images={final} />
+            </div>
+        </InfoSection>
+    </div>
+
+    <GeneralFooter />
+</Layout>

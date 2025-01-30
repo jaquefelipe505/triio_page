@@ -1,41 +1,50 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Section from "../components/Section.astro"
 import LandingHeader from "../components/LandingHeader.astro"
 import GeneralFooter from "../components/GeneralFooter.astro"
+import Preloader from '../components/Preloader.astro';
+import Galery from "../components/Galery.astro";
 
 import { getCollection } from "astro:content";
 
 const vivienda = await getCollection('vivienda')
-
 ---
 <Layout>
+<Preloader/>
 <LandingHeader/>
 
+<Galery
+    title= Hola
+    color = white
+    bg_color = black>
 
-<section aria-label="hola">
-    <div class="px-4 mx-auto max-w-screen-xl">
-        <div class="grid gap-6 md:grid-cols-2">
-            {
-                vivienda.map((casa: { data: any; }) => { 
-                    const {data} = casa
-                    const { title, description, img_proceso } = data
 
-                    return (
-                        <article>
+    <div slot="aux_slot">
+      <section>
+        <div class="px-4 mx-auto max-w-screen-xl">
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {vivienda.map((casa) => {
+              const { slug, data } = casa;
+              const { title, description, main_img, m_array, p_array, f_array } = data;
+  
+              return (
+                <article>
+                    <a href={`/casas_pages/${slug}`}>
+                    <div class="transition hover:scale-110">
 
-                            <img src={`${img_proceso}`} alt={title} class="w-full rounded-lg">
-                        </article>
-                    )
-                }) 
-            }
-
+                        <img src={main_img} alt={title} class="w-full rounded-lg" />
+                        <h3 class="mt-2 text-lg font-semibold text-white">{title}</h3>
+                        <p class="text-sm text-gray-500">{description}</p>
+                    </div>
+                    </a>
+                </article>
+              );
+            })}
+          </div>
         </div>
-
+      </section>
     </div>
-</section>
-
-
+</Galery>
 
 <GeneralFooter/>
 <Layout/>

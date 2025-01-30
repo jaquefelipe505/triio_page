@@ -4,9 +4,12 @@ const vivienda = defineCollection({
      schema: z.object({
         title: z.string(),
         description: z.string(),
-        img_proceso: z.string()
-     })
+        main_img: z.string(),
+        m_array: z.array(z.string()),
+        p_array: z.array(z.string()),
+        f_array: z.array(z.string()),
+     }),
 
-})
+});
 
-export const collections = {vivienda}
+export const collections = {vivienda};

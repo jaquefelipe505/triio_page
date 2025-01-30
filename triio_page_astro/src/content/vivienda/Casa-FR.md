@@ -1,10 +1,16 @@
 ---
-title: Casa GA
+title: Casa FR
 description: hablar de la casa
 main_img: "../../public/GA-2.webp"
 m_array:
   - "../../public/casas/casa_GA/modelo/m-GA1.webp"
   - "../../public/casas/casa_GA/modelo/m-GA1.webp"
+  - "../../public/casa1.jpeg"
+  - "../../public/casa2.jpeg"
+  - "../../public/casa3.jpeg"
+  - "../../public/GA-1.webp"
+  - "../../public/GA-2.webp"
+
 p_array:
   - "../../../public/casas/casa_GA/proceso/p-GA.webp"
   - "../../public/casas/casa_GA/proceso/p-GA0.webp"
@@ -20,6 +26,7 @@ p_array:
   - "../../public/casas/casa_GA/proceso/p-GA10.webp"
   - "../../public/casas/casa_GA/proceso/p-GA11.webp"
   - "../../public/casas/casa_GA/proceso/p-GA12.webp"
+  
 f_array: 
 - "../../public/casas/casa_GA/final/f-GA.webp"
 - "../../public/casas/casa_GA/final/f-GA1.webp"

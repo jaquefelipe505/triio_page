@@ -1,0 +1,52 @@
+---
+import Logo from "./Logo.astro"
+---
+
+<div id="preloader" class="fixed inset-0 flex items-center justify-center bg-white z-50">
+    <!-- Contenedor del círculo y logo -->
+    <div class="relative flex items-center justify-center">
+      <!-- Círculo giratorio -->
+      <svg 
+        class="absolute w-[180px] h-[180px] animate-spin"
+        xmlns="http://www.w3.org/2000/svg"
+        width="140"
+        height="140"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="gray"
+        stroke-width="0.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.6"
+      >
+        <path d="M12 3a9 9 0 1 0 9 9" />
+      </svg>
+  
+      <!-- Logo central -->
+      <Logo 
+        color_o="gray"
+        color_t="gray"
+        h_size="20"
+        w_size="20"
+        animate="pulse"
+      />
+    </div>
+  </div>
+
+
+  <style>
+    /* Puedes ajustar el estilo de la animación aquí */
+    .loader {
+      border-top-color: #3498db; /* Color del spinner */
+    }
+  </style>
+  
+  <script is:inline>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      if (preloader) {
+        preloader.style.display = "none"; // Oculta el preloader después de que la página se haya cargado
+      }
+    });
+  </script>
+  
