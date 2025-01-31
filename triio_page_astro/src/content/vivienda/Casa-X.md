@@ -2,6 +2,7 @@
 title: Casa X
 description: hablar de la casa
 main_img: "../../public/GA-2.webp"
+main_video: "../../public/casas/casa_GA/v-GA1.webp"
 m_array:
   - "../../public/casas/casa_GA/modelo/m-GA1.webp"
   - "../../public/casas/casa_GA/modelo/m-GA1.webp"

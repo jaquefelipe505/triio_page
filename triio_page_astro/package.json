@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "@tailwindcss/typography": "^0.5.16",
     "typescript": "^5.7.2"
   },
   "description": "```sh npm create astro@latest -- --template basics ```",
