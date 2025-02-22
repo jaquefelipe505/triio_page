@@ -6,5 +6,8 @@ export default {
 	theme: {
 		extend: {},
 	},
-	plugins: [typography],
+	plugins: [
+		require('tailwindcss-animated'),
+		require("tailwind-inview"),
+		typography],
 }

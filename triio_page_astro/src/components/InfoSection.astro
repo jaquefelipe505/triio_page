@@ -5,13 +5,19 @@ const bgColor = `bg-${bg_color}`
 const bgOpacity = `bg-${bg_opacity}`
 ---
 
-<section class={`${bgColor} ${bgOpacity} h-screen w-screen text-center overflow-hidden z-30 relative`}>
+<section class={`${bgColor} ${bgOpacity} h-screen w-screen text-center overflow-hidden z-30 relative flex items-center justify-center pb-20`}>
 
 	<div class="z-30 relative h-full flex flex-col">
 		
-		<header>
-			<p class={`${textColor} text-base`}>{subtitle}</p>
-			<slot name="aux_slot" class="absolsute"></slot>
+		<header class="w-full flex flex-col items-center justify-center min-h-screen">
+			<div class="w-full max-w-screen px-6 grid grid-cols-1 lg:grid-cols-2 items-center justify-between gap-6 mt-5 mb-10">
+				<slot name="aux_slot"></slot>
+				<slot name="aux_slot2"></slot>
+			</div>
+			<div class="w-full max-w-screen shrink-0 px-6 flex flex-col-reverse lg:flex-row items-center justify-center gap-6 mt-5 mb-10">
+				<slot name="aux_slot0" class=""></slot>
+				<slot name="aux_slot20" class=""></slot>
+			</div>
             
 		</header>
 		

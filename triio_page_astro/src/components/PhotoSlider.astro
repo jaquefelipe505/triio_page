@@ -6,14 +6,14 @@ const { images }: Props = Astro.props;
 const sliderId = Math.random().toString(36).substring(2, 9); // ID único para cada slider
 ---
 
-<section class="overflow-hidden relative" data-slider-id={sliderId}>
+<section class="overflow-hidden relative w-full aspect-[16/12] lg:max-w-3xl md:max-w-2xl sm:max-w-md" data-slider-id={sliderId}>
   <!-- Slides -->
   <div class="slider flex transition-transform duration-500 ease-out w-full h-full">
     {images.map((image, index) => (
       <img 
         src={image} 
         alt={`Slide ${index + 1}`} 
-        class="w-full h-full object-cover flex-shrink-0 rounded-lg"
+        class="w-full h-full object-cover flex-shrink-0 aspect-[16/12] rounded-lg"
       />
     ))}
   </div>
