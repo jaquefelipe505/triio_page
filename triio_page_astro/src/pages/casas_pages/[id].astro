@@ -8,6 +8,7 @@ import GeneralFooter from "../../components/GeneralFooter.astro";
 import Section from "../../components/Section.astro";
 import InfoSection from "../../components/InfoSection.astro";
 import PhotoSlider from "../../components/PhotoSlider.astro";
+import Galery from "../../components/Galery.astro";
 
 
 export async function getStaticPaths() {
@@ -27,6 +28,8 @@ const { title, description, main_img, main_video, m_array, p_array, f_array } = 
 const modelo = m_array ?? [];
 const proceso = p_array ?? [];
 const final = f_array ?? [];
+
+const allImages = [...modelo, ...proceso, ...final].filter(Boolean);
 ---
 
 
@@ -50,56 +53,102 @@ const final = f_array ?? [];
         </Section>
     </div>
 
-<!-- Modelo 3D -->
+    <Galery
+    title= Hola
+    color = white
+    bg_color = black>
 
-    <div class="snap-center">
-        <InfoSection bg_color="black">
 
-            <div slot="aux_slot" class="relative max-w-4xl ">
-                <PhotoSlider images={modelo} />
-            </div>
-            <div slot="aux_slot2" class="">
-                <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">
-                    En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
-                </p>   
-            </div>
-        </InfoSection>
+    <div slot="aux_slot">
+      <section>
+        
+<h1>{title}</h1>
+<p>{description}</p>
+
+{main_video && (
+  <video controls>
+    <source src={main_video} type="video/webm" />
+    Tu navegador no soporta el video.
+  </video>
+)}
+
+<section class="gallery">
+  {allImages.map((img) => (
+    <img src={img} alt="Imagen de la casa" loading="lazy" onclick="openLightbox(this.src)" />
+  ))}
+</section>
+
+<!-- Lightbox -->
+<dialog id="lightbox">
+  <img id="lightbox-img" src="" alt="Imagen ampliada" />
+  <button onclick="closeLightbox()"><div class="p-1 hover:bg-slate-300 hover:bg-opacity-40 rounded">
+    <svg color=black xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="white"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+</div></button>
+</dialog>
+
+<script class="is:inline">
+  function openLightbox(src) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    lightboxImg.src = src;
+    lightbox.showModal();
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").close();
+  }
+</script>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Lightbox */
+  dialog#lightbox {
+    border: none;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    text-align: center;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  dialog#lightbox img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+  }
+
+  dialog#lightbox button {
+    margin-top: 10px;
+    padding: ;
+    background:;
+    border: none;
+    cursor: pointer;
+    font-size: 0px;
+  }
+ 
+</style>
+      </section>
     </div>
-
-<!-- Proceso Constructivo -->
-
-    <div class="snap-center">
-        <InfoSection bg_color="gray-800"
-                     bg_opacity = 0.8>
-
-            <div slot="aux_slot20" class="relative sm:max-w-3xl md:max-w-4xl flex-wrap ">
-                <PhotoSlider images={proceso} />
-            </div>
-
-            <div slot="aux_slot0" class="animate-fade-left duration-1000 animate-delay-300" >
-                <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-lg">
-                    En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
-                </p>   
-            </div>
-
-        </InfoSection>
-    </div>
-
-<!-- Obra Final -->
-
-    <div class="snap-center">
-        <InfoSection bg_color="black">
-            <div slot="aux_slot" class="relative max-w-4xl flex-wrap">
-                <PhotoSlider images={final} />
-            </div>
-            <div slot="aux_slot2" class="flex-wrap">
-                <p class="text-white text-left text-xl bg-black bg-opacity-80 rounded max-w-xl px-10 py-5">
-                    En GRUPO TRIIO SpA, combinamos innovación, experiencia y profesionalismo para ofrecer servicios de arquitectura y construcción de alta calidad. Fundada en noviembre de 2016 por la arquitecta Pamela Marzán, titulada en la Universidad de Valparaíso y con un Diplomado en Evaluación y Preparación de Proyectos Inmobiliarios de la Universidad de Chile, nuestra empresa nace con la visión de redefinir los estándares en diseño y construcción.
-                </p>   
-            </div>
-        </InfoSection>
-    </div>
-
+    </Galery>
 
 
     <div class="snap-center">
