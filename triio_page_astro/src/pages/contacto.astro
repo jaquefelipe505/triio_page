@@ -1,22 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LandingHeader from '../components/LandingHeader.astro';
-import Section from '../components/Section.astro';
 import GeneralFooter from '../components/GeneralFooter.astro';
 import Preloader from '../components/Preloader.astro';
+import Galery from "../components/Galery.astro";
 ---
 
 <Layout title="Triio Page/contacto">
     <Preloader/>
     <LandingHeader/>
     <div>
-        <Section color="white" title="Contacto">
+        <Galery color="white" title="Contacto">
             <img
 			slot="background"
 			class="h-full w-full object-center object-cover" 
 			src="../../public/foto.jpg">
         
-        <div slot="aux_slot" class="z-30 pt-[55px] flex items-center justify-center inset-0">
+        <div slot="aux_slot" class="z-30 flex items-center justify-center inset-0">
             <form class="bg-white p-6 rounded-lg shadow-lg">
                 <label class="block mb-2">Nombre</label>
                 <input type="text" name="nombre" class="border p-2 mb-4 w-full rounded">
