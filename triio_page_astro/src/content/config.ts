@@ -5,7 +5,7 @@ const vivienda = defineCollection({
         title: z.string(),
         description: z.string(),
         main_img: z.string(),
-        main_video: z.string().optional(), 
+        end_img: z.string().optional(), 
         m_array: z.array(z.string()),
         p_array: z.array(z.string()),
         f_array: z.array(z.string()),

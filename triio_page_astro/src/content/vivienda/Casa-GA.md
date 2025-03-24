@@ -1,8 +1,10 @@
 ---
 title: Casa GA
 description: hablar de la casa
+
+
 main_img: "../../public/casas/casa_GA/final/f-GA.webp"
-main_video: "../../public/casas/casa_GA/v-GA1.webm"
+end_img: "../../public/casas/casa_GA/v-GA1.webm"
 m_array:
   - "../../public/casas/casa_GA/modelo/m-GA1.webp"
   - "../../public/casas/casa_GA/modelo/m-GA2.webp"

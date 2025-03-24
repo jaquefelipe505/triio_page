@@ -1,5 +1,5 @@
 ---
-const {color, bg_color, title, subtitle} = Astro.props
+const {color, bg_color, title, description} = Astro.props
 const textColor = `text-${color}`
 const bgColor = `bg-${bg_color}`
 ---
@@ -10,7 +10,7 @@ const bgColor = `bg-${bg_color}`
 		
 		<header>
             <h2 class={`${textColor} pt-40 text-5xl font-medium`}>{title}</h2>
-			<p class={`${textColor} text-base`}>{subtitle}</p>
+			<p class={`${textColor} text-xl`}>{description}</p>
             <div class="pt-20 pb-20">
                 <slot name="aux_slot" class="absolsute"></slot>
             </div>

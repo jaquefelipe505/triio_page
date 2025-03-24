@@ -21,8 +21,8 @@ export async function getStaticPaths() {
 }
 
 const { casa } = Astro.props;
-const { data } = casa;
-const { title, description, main_img, main_video, m_array, p_array, f_array } = data;
+const { data} = casa;
+const { title, description, main_img, end_img, m_array, p_array, f_array } = data;
 
 
 const modelo = m_array ?? [];
@@ -41,7 +41,6 @@ const allImages = [...modelo, ...proceso, ...final].filter(Boolean);
 
     <div class="snap-center">
         <Section title={title}
-                 subtitle={description}
                  color="white" 
                  bg_color = "black">
 
@@ -54,23 +53,17 @@ const allImages = [...modelo, ...proceso, ...final].filter(Boolean);
     </div>
 
     <Galery
-    title= Hola
     color = white
+    description = {description}
+
     bg_color = black>
 
 
     <div slot="aux_slot">
       <section>
         
-<h1>{title}</h1>
-<p>{description}</p>
 
-{main_video && (
-  <video controls>
-    <source src={main_video} type="video/webm" />
-    Tu navegador no soporta el video.
-  </video>
-)}
+
 
 <section class="gallery">
   {allImages.map((img) => (
@@ -161,7 +154,7 @@ const allImages = [...modelo, ...proceso, ...final].filter(Boolean);
                  slot="background" 
                  class="h-full w-full object-center object-cover" 
                  autoplay loop 
-                 src={main_video}></video>
+                 src={end_img}></video>
 
             
                  <div slot="footer">
